@@ -27,8 +27,8 @@ public class ImageUtil extends FileUtil {
         Log.i(LOG_TAG, "saving Bitmap : " + filename);
 
         try {
-            FileOutputStream fileout = new FileOutputStream(filename);
-            BufferedOutputStream bufferOutStream = new BufferedOutputStream(fileout);
+            FileOutputStream fileOutputStream = new FileOutputStream(filename);
+            BufferedOutputStream bufferOutStream = new BufferedOutputStream(fileOutputStream);
             bmp.compress(Bitmap.CompressFormat.JPEG, 100, bufferOutStream);
             bufferOutStream.flush();
             bufferOutStream.close();

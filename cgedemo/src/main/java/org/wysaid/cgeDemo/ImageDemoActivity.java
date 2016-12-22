@@ -80,7 +80,7 @@ public class ImageDemoActivity extends ActionBarActivity {
             }
         });
 
-        _imageView.setDisplayMode(ImageGLSurfaceView.DisplayMode.DISPLAY_ASPECT_FIT);
+        _imageView.setDisplayMode(ImageGLSurfaceView.DisplayMode.DISPLAY_ASPECT_FILL);
 
         SeekBar seekBar = (SeekBar)findViewById(R.id.seekBar);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {

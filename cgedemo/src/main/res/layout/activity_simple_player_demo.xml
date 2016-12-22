@@ -6,10 +6,18 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".SimplePlayerDemoActivity">
 
-    <FrameLayout
-        android:id="@+id/glviewFrameLayout"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        >
+
+
+        <FrameLayout
+        android:id="@+id/glviewFrameLayout"
+        android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
         >
 
         <org.wysaid.view.SimplePlayerGLSurfaceView
@@ -24,8 +32,9 @@
         android:id="@+id/seekBar"/>
 
     <HorizontalScrollView
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_alignParentBottom="true">
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,5 +69,5 @@
 
         </LinearLayout>
     </HorizontalScrollView>
-
+    </LinearLayout>
 </RelativeLayout>
