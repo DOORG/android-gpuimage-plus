@@ -138,11 +138,12 @@ public class MainActivity extends ActionBarActivity {
 
     public CGENativeLibrary.LoadImageCallback loadImageCallback = new CGENativeLibrary.LoadImageCallback() {
 
+        //Notice: the 'name' passed in is just what you write in the rule, e.g: 1.jpg
         //注意， 这里回传的name不包含任何路径名， 仅为具体的图片文件名如 1.jpg
         @Override
         public Bitmap loadImage(String name, Object arg) {
 
-            Log.i(Common.LOG_TAG, "正在加载图片: " + name);
+            Log.i(Common.LOG_TAG, "Loading file: " + name);
             AssetManager am = getAssets();
             InputStream is;
             try {
@@ -157,9 +158,10 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public void loadImageOK(Bitmap bmp, Object arg) {
-            Log.i(Common.LOG_TAG, "加载图片完毕， 可以自行选择 recycle or cache");
+            Log.i(Common.LOG_TAG, "Loading bitmap over, you can choose to recycle or cache");
 
-            //loadImage结束之后可以马上recycle
+            //The bitmap is which you returned at 'loadImage'.
+            //You can call recycle when this function is called, or just keep it for further usage.
             //唯一不需要马上recycle的应用场景为 多个不同的滤镜都使用到相同的bitmap
             //那么可以选择缓存起来。
             bmp.recycle();
@@ -204,7 +206,7 @@ public class MainActivity extends ActionBarActivity {
         @Override
         public void onClick(final View v) {
             Log.i(LOG_TAG, String.format("%s is clicked!", mDemo.title));
-            Class cls = null;
+            Class cls;
             try {
                 cls = Class.forName("org.wysaid.cgeDemo." + mDemo.activityName);
             } catch (ClassNotFoundException e) {
@@ -235,6 +237,7 @@ public class MainActivity extends ActionBarActivity {
             mLayout.addView(btn);
         }
 
+        //The second param will be passed as the second arg of the callback function.
         //第二个参数根据自身需要设置， 将作为 loadImage 第二个参数回传
         CGENativeLibrary.setLoadImageCallback(loadImageCallback, null);
     }
