@@ -439,6 +439,7 @@ public class VideoPlayerGLSurfaceView extends GLSurfaceView implements GLSurface
 
         try {
             mPlayer.setDataSource(getContext(), mVideoUri);
+            //mPlayer.setDataSource();
             mPlayer.setSurface(new Surface(mSurfaceTexture));
 
         } catch (Exception e) {
